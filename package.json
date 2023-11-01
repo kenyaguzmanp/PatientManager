@@ -10,7 +10,8 @@
     "test": "jest",
     "format": "prettier --check ./src",
     "eslint-fix": "eslint --ext .tsx --ext .ts src/ --fix",
-    "precommit": "yarn eslint-fix && prettier --write"
+    "precommit": "yarn eslint-fix && prettier --write",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "18.2.0",
