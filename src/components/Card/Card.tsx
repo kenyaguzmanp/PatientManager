@@ -6,7 +6,7 @@ interface CardProps {}
 const Card: FC<CardProps> = ({}) => {
   return (
     <View>
-      <Title> Title</Title>
+      <Title> Title2</Title>
       <Text>Card</Text>
     </View>
   );
