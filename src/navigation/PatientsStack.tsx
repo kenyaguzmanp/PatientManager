@@ -25,6 +25,7 @@ const PatientsStack = () => {
             component={Patients}
             options={{
               headerTitle: i18n.t('PATIENTS'),
+              header: () => null,
             }}
           />
           <Stack.Screen

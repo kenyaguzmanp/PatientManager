@@ -1,15 +1,23 @@
 import React, { FC, useEffect } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import Card from '../../components/Card/Card';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 import { enhancedRetrieveUsers } from '../../api/services';
 import { noop } from 'lodash';
 import { useSelector } from 'react-redux';
 import { getPatients } from '../../store/selectors';
+import { PatientsList } from '../../components/PatientsList/PatientsList';
+import i18n from '../../i18n/locales';
+import styles from './style';
+import { Header } from '../../components/Header/Header';
+import { Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import { ScreenNames } from '../ScreenNames';
+import { HomeScreenNavigationProp } from '../../navigation/types';
 
 interface HomeProps {}
 
 export const Home: FC<HomeProps> = () => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
   useEffect(() => {
     const patientsPromise = async () => {
       await enhancedRetrieveUsers({
@@ -24,24 +32,19 @@ export const Home: FC<HomeProps> = () => {
   const patients = useSelector(getPatients);
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View>
-          <Text>Home</Text>
-          {patients &&
-            patients.length > 0 &&
-            patients.map((patient) => {
-              return (
-                <Card
-                  key={patient?.id}
-                  title={patient?.name}
-                  description={patient?.description}
-                  cover={patient?.avatar}
-                />
-              );
-            })}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View>
+      <Header title={i18n.t('HOME_TITLE')}>
+        <Button
+          style={styles.buttonHeader}
+          mode="text"
+          onPress={() => navigation.navigate(ScreenNames.Patients)}
+        >
+          {i18n.t('SEE_ALL_PATIENTS_BUTTON_TITLE')}
+        </Button>
+      </Header>
+      <View style={styles.container}>
+        <PatientsList patients={patients} />
+      </View>
+    </View>
   );
 };

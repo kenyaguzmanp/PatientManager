@@ -18,7 +18,9 @@ const Card: FC<CardProps> = ({ title, description, cover }: CardProps) => {
       {cover && <PaperCard.Cover source={{ uri: cover }} />}
       <PaperCard.Content>
         <Text variant="titleLarge">{title}</Text>
-        <Text variant="bodyMedium">{description}</Text>
+        <Text variant="bodyMedium" numberOfLines={3}>
+          {description}
+        </Text>
       </PaperCard.Content>
       <PaperCard.Actions>
         <Button onPress={() => navigation.navigate(ScreenNames.Patients)}>otro</Button>
