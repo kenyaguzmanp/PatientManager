@@ -1,6 +1,6 @@
 export enum ScreenNames {
   Home = 'Home',
-  Patients = 'PatientsScreen',
+  Patients = 'Patients',
   PatientDetail = 'PatientDetail',
   EditPatientDetail = 'EditPatientDetail',
   Meds = 'Meds',

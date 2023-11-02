@@ -2,10 +2,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type HomeStackNavigatorParamList = {
   HomeScreen: undefined;
-  PatientsScreen: {
-    name: string;
-    birthYear: string;
-  };
+  Patients: undefined;
   PatientDetail: undefined;
 };
 
