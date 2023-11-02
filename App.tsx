@@ -1,17 +1,13 @@
 import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
 
-import Card from './src/components/Card/Card';
-import { PatientForm } from './src/components/PatientForm/PatientForm';
+import Navigator from './src/navigation/navigator';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Card />
-        <PatientForm patientId={'93'} />
-      </ScrollView>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <Navigator />
+    </SafeAreaProvider>
   );
 }
 
