@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Patient } from '../../types/patient/intex';
+import { Patient, PatientResponse } from '../../types/patient/intex';
 
 export interface PatientSlice {
   patients: Patient[];
@@ -19,9 +19,9 @@ const videos = createSlice({
   name: 'patients',
   initialState,
   reducers: {
-    setPatients(state, action: PayloadAction<Array<Patient>>) {
+    setPatients(state, action: PayloadAction<PatientResponse>) {
       const { payload } = action;
-      state.patients = payload;
+      state.patients = payload || [];
     },
     setInitialState(state) {
       state.patients = [];

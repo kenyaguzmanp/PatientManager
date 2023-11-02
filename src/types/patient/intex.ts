@@ -15,3 +15,5 @@ export interface Patient {
   website: string;
   id: string;
 }
+
+export type PatientResponse = Patient[] | undefined;
