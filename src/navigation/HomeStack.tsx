@@ -6,6 +6,7 @@ import { ScreenNames } from '../screens/ScreenNames';
 import i18n from '../i18n/locales';
 import { Home } from '../screens/Home/Home';
 import { Patients } from '../screens/Patients/Patients';
+import { PatientDetail } from '../screens/PatientDetail/PatientDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,11 @@ const HomeStack = () => {
               headerTitle: i18n.t('PATIENTS'),
               header: () => null,
             }}
+          />
+          <Stack.Screen
+            name={'PatientDetail'}
+            component={PatientDetail}
+            options={{ headerTitle: i18n.t('PATIENT_DETAILS') }}
           />
         </Stack.Group>
       </Stack.Navigator>

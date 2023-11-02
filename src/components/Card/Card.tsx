@@ -1,5 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Button, Card as PaperCard, Text } from 'react-native-paper';
+import { ScreenNames } from '../../screens/ScreenNames';
+import { HomeScreenNavigationProp } from '../../navigation/types';
 
 interface CardProps {
   title: string;
@@ -8,6 +11,8 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ title, description, cover }: CardProps) => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
   return (
     <PaperCard>
       {cover && <PaperCard.Cover source={{ uri: cover }} />}
@@ -16,8 +21,8 @@ const Card: FC<CardProps> = ({ title, description, cover }: CardProps) => {
         <Text variant="bodyMedium">{description}</Text>
       </PaperCard.Content>
       <PaperCard.Actions>
-        <Button>Cancel</Button>
-        <Button>Ok</Button>
+        <Button onPress={() => navigation.navigate(ScreenNames.Patients)}>otro</Button>
+        <Button onPress={() => navigation.navigate(ScreenNames.PatientDetail)}>Ver mas</Button>
       </PaperCard.Actions>
     </PaperCard>
   );
