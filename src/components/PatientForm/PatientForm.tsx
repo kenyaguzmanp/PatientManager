@@ -37,10 +37,8 @@ export interface PatientSimpleInput {
 export const PatientForm: FC<PatientFormProps> = ({ patient }: PatientFormProps) => {
   const mappedInputs = getMappedFormatInputs(patient);
   const dispatch = useDispatch();
-  // console.log('🚀 ~ file: PatientForm.tsx:36 ~ mappedInputs:', { mappedInputs });
 
   const onSubmit = (values: PatientFormValues) => {
-    console.log('🚀 ~ file: PatientForm.tsx:35 ~ values:', values);
     dispatch(updatePatientFields({ patient, values }));
   };
 
