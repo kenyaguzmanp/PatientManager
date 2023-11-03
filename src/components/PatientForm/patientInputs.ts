@@ -32,7 +32,7 @@ export const PATIENT_FORM_INPUTS: Array<PatientSimpleInput> = [
     placeholder: 'Age',
     style: styles.textInput,
     keyboardType: 'numeric',
-    editable: false,
+    editable: true,
     onPressEdit: () => {
       console.log('🚀 ~ file: PatientForm.tsx:38 ~ onPressEdit:');
     },
