@@ -6,10 +6,10 @@ import i18n from '../../i18n/locales';
 import HomeStack from '../../navigation/HomeStack';
 import IconHome from '../SvgIcons/HomeIcon/HomeIcon';
 import { ScreenNames } from '../../screens/ScreenNames';
-import ExploreIcon from '../SvgIcons/ExploreIcon/ExploreIcon';
 import PatientsStack from '../../navigation/PatientsStack';
 import MedsStack from '../../navigation/MedsStack';
-import FireIcon from '../SvgIcons/FireIcon/FireIcon';
+import { PatientIcon } from '../SvgIcons/PatientIcon/PatientIcon';
+import { HeartIcon } from '../SvgIcons/HeartIcon/HeartIcon';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -34,7 +34,7 @@ const BottomTabs = () => {
         component={PatientsStack}
         options={{
           tabBarIcon: () => {
-            return <ExploreIcon />;
+            return <PatientIcon />;
           },
         }}
       />
@@ -43,7 +43,7 @@ const BottomTabs = () => {
         component={MedsStack}
         options={{
           tabBarIcon: () => {
-            return <FireIcon />;
+            return <HeartIcon />;
           },
         }}
       />

@@ -19,6 +19,7 @@ export const PatientsList: FC<PatientsListProps> = ({ patients }: PatientsListPr
           title={item?.name}
           description={item?.description}
           cover={item?.avatar}
+          website={item?.website}
         />
       </View>
     );

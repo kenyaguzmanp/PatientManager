@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { enhancedRetrieveUsers } from '../../api/services';
 import { noop } from 'lodash';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { ScreenNames } from '../ScreenNames';
 import { HomeScreenNavigationProp } from '../../navigation/types';
+import { HealthList } from '../../components/HealthList/HealthList';
 
 interface HomeProps {}
 
@@ -32,7 +33,7 @@ export const Home: FC<HomeProps> = () => {
   const patients = useSelector(getPatients);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header title={i18n.t('HOME_TITLE')}>
         <Button
           style={styles.buttonHeader}
@@ -43,8 +44,9 @@ export const Home: FC<HomeProps> = () => {
         </Button>
       </Header>
       <View>
+        <HealthList />
         <PatientsList patients={patients.slice(0, 5)} />
       </View>
-    </View>
+    </ScrollView>
   );
 };

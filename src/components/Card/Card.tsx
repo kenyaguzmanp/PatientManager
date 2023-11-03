@@ -7,16 +7,19 @@ import i18n from '../../i18n/locales';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPatientById } from '../../store/selectors';
 import { setSelectedPatient } from '../../store/slices/patientsSlice';
+import styles from './style';
+import { View } from 'react-native';
 
 interface CardProps {
   id: string;
   title: string;
   description: string;
   cover?: string;
+  website?: string;
   onPressButton?: () => void;
 }
 
-const Card: FC<CardProps> = ({ id, title, description, cover }: CardProps) => {
+const Card: FC<CardProps> = ({ id, title, description, cover, website }: CardProps) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const currentPatient = useSelector(getPatientById(id)) || null;
   const dispatch = useDispatch();
@@ -28,10 +31,21 @@ const Card: FC<CardProps> = ({ id, title, description, cover }: CardProps) => {
 
   return (
     <PaperCard>
-      {cover && <PaperCard.Cover source={{ uri: cover }} />}
+      <View style={styles.cover}>
+        {cover && <PaperCard.Cover style={styles.imageContainer} source={{ uri: cover }} />}
+        <View style={styles.titleContainer}>
+          <Text style={styles.centered} variant="titleLarge">
+            {title}
+          </Text>
+          {website && (
+            <Text style={styles.centered} variant="labelMedium">
+              {website}
+            </Text>
+          )}
+        </View>
+      </View>
       <PaperCard.Content>
-        <Text variant="titleLarge">{title}</Text>
-        <Text variant="bodyMedium" numberOfLines={3}>
+        <Text style={styles.description} variant="bodyMedium" numberOfLines={3}>
           {description}
         </Text>
       </PaperCard.Content>
