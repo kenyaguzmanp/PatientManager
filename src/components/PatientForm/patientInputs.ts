@@ -1,13 +1,14 @@
+import { isEmpty } from 'lodash';
+import { Patient } from '../../types/patient/intex';
 import { PatientSimpleInput } from './PatientForm';
 import styles from './styles';
 
-export const patientFormInputs: Array<PatientSimpleInput> = [
+export const PATIENT_FORM_INPUTS: Array<PatientSimpleInput> = [
   {
-    name: 'fullName',
+    name: 'name',
     placeholder: 'Full Name',
     style: styles.textInput,
     editable: false,
-    defaultValue: 'Kenya Guzman',
   },
   {
     name: 'email',
@@ -15,7 +16,6 @@ export const patientFormInputs: Array<PatientSimpleInput> = [
     style: styles.textInput,
     keyboardType: 'email-address',
     editable: true,
-    defaultValue: 'kenyaguzmanp@gmail.com',
   },
   {
     name: 'phoneNumber',
@@ -32,7 +32,6 @@ export const patientFormInputs: Array<PatientSimpleInput> = [
     placeholder: 'Age',
     style: styles.textInput,
     keyboardType: 'numeric',
-    defaultValue: '30',
     editable: false,
     onPressEdit: () => {
       console.log('🚀 ~ file: PatientForm.tsx:38 ~ onPressEdit:');
@@ -59,3 +58,28 @@ export const patientFormInputs: Array<PatientSimpleInput> = [
     },
   },
 ];
+
+const getPatientFormInputs = () => {
+  let fields = {};
+  PATIENT_FORM_INPUTS.forEach((formInput) => {
+    fields = {
+      ...fields,
+      [formInput.name]: null,
+    };
+  });
+  return fields;
+};
+
+export const PATIENT_FORM_INPUTS_FIELDS = getPatientFormInputs();
+
+export const getMappedFormatInputs = (patientDetails?: Patient) => {
+  const isEmptyDetails = isEmpty(patientDetails);
+  const mappedPatientFormInputs = PATIENT_FORM_INPUTS.map((formInput) => {
+    return {
+      ...formInput,
+      defaultValue: isEmptyDetails ? '' : patientDetails[formInput.name],
+    };
+  });
+
+  return mappedPatientFormInputs;
+};

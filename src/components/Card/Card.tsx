@@ -3,15 +3,28 @@ import React, { FC } from 'react';
 import { Button, Card as PaperCard, Text } from 'react-native-paper';
 import { ScreenNames } from '../../screens/ScreenNames';
 import { HomeScreenNavigationProp } from '../../navigation/types';
+import i18n from '../../i18n/locales';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPatientById } from '../../store/selectors';
+import { setSelectedPatient } from '../../store/slices/patientsSlice';
 
 interface CardProps {
+  id: string;
   title: string;
   description: string;
   cover?: string;
+  onPressButton?: () => void;
 }
 
-const Card: FC<CardProps> = ({ title, description, cover }: CardProps) => {
+const Card: FC<CardProps> = ({ id, title, description, cover }: CardProps) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
+  const currentPatient = useSelector(getPatientById(id)) || null;
+  const dispatch = useDispatch();
+
+  const handleOnPressButton = () => {
+    dispatch(setSelectedPatient(currentPatient));
+    navigation.navigate(ScreenNames.PatientDetail);
+  };
 
   return (
     <PaperCard>
@@ -23,8 +36,7 @@ const Card: FC<CardProps> = ({ title, description, cover }: CardProps) => {
         </Text>
       </PaperCard.Content>
       <PaperCard.Actions>
-        <Button onPress={() => navigation.navigate(ScreenNames.Patients)}>otro</Button>
-        <Button onPress={() => navigation.navigate(ScreenNames.PatientDetail)}>Ver mas</Button>
+        <Button onPress={handleOnPressButton}>{i18n.t('SEE_MORE')}</Button>
       </PaperCard.Actions>
     </PaperCard>
   );

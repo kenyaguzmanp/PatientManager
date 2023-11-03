@@ -10,4 +10,7 @@ export default {
   SEE_ALL_PATIENTS_BUTTON_TITLE: 'Ver todos los Pacientes',
   HOME_NAME_TITLE: 'Hello, %{name}',
   HOME_TITLE: 'Welcome to your Patient Manager!',
+  SEE_MORE: 'Ver mas',
+  EDIT_DETAILS: 'Editar detalles',
+  EDIT_PATIENT_DETAIL: 'Editar detalles de %{name}',
 };

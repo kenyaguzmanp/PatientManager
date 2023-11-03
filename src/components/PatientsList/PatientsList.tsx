@@ -14,6 +14,7 @@ export const PatientsList: FC<PatientsListProps> = ({ patients }: PatientsListPr
     return (
       <View style={styles.cardContainer}>
         <Card
+          id={item?.id}
           key={item?.id}
           title={item?.name}
           description={item?.description}
@@ -27,7 +28,7 @@ export const PatientsList: FC<PatientsListProps> = ({ patients }: PatientsListPr
     return (
       <View style={styles.container}>
         <FlatList
-          data={patients.slice(0, 5)}
+          data={patients}
           renderItem={renderItem}
           keyExtractor={(item, index) => `${item?.id}-${index}`}
           initialNumToRender={10}

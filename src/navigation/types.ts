@@ -4,6 +4,7 @@ export type HomeStackNavigatorParamList = {
   HomeScreen: undefined;
   Patients: undefined;
   PatientDetail: undefined;
+  EditPatientDetail: undefined;
 };
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<HomeStackNavigatorParamList>;

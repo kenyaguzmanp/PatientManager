@@ -32,7 +32,7 @@ export const Home: FC<HomeProps> = () => {
   const patients = useSelector(getPatients);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Header title={i18n.t('HOME_TITLE')}>
         <Button
           style={styles.buttonHeader}
@@ -42,8 +42,8 @@ export const Home: FC<HomeProps> = () => {
           {i18n.t('SEE_ALL_PATIENTS_BUTTON_TITLE')}
         </Button>
       </Header>
-      <View style={styles.container}>
-        <PatientsList patients={patients} />
+      <View>
+        <PatientsList patients={patients.slice(0, 5)} />
       </View>
     </View>
   );

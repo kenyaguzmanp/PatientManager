@@ -1,19 +1,26 @@
+import { Nullable } from '..';
+
 export interface PatientFormValues {
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-  age: string;
-  weight: string;
-  bmi: string;
+  name: Nullable<string>;
+  email?: Nullable<string>;
+  phoneNumber?: Nullable<string>;
+  age?: Nullable<string>;
+  weight?: Nullable<string>;
+  bmi?: Nullable<string>;
 }
 
 export interface Patient {
-  createdAt: string;
-  name: string;
-  avatar: string;
-  description: string;
-  website: string;
-  id: string;
+  createdAt?: Nullable<string>;
+  name?: Nullable<string>;
+  avatar?: Nullable<string>;
+  description?: Nullable<string>;
+  website?: Nullable<string>;
+  id?: Nullable<string>;
+  email?: Nullable<string>;
+  phoneNumber?: Nullable<string>;
+  weight?: Nullable<string>;
+  bmi?: Nullable<string>;
+  age?: Nullable<string>;
 }
 
 export type PatientResponse = Patient[] | undefined;

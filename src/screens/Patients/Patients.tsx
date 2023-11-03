@@ -1,16 +1,21 @@
 import React, { FC } from 'react';
-import { View, Text } from 'react-native';
-import { Header } from '../../components/Header/Header';
+import { View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { getPatients } from '../../store/selectors';
+import { PatientsList } from '../../components/PatientsList/PatientsList';
+import styles from './style';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface PatientsProps {}
 
 export const Patients: FC<PatientsProps> = () => {
+  const patients = useSelector(getPatients);
+
   return (
-    <View>
-      <Header title="Pacientes" />
-      <View>
-        <Text>Patients</Text>
+    <SafeAreaView>
+      <View style={styles.content}>
+        <PatientsList patients={patients} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
